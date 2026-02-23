@@ -1,0 +1,64 @@
+[build-system]
+requires = ["setuptools>=68.0", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "django-shopman-commons"
+version = "0.2.0"
+description = "Shared utilities for the Shopman suite"
+readme = "README.md"
+license = "MIT"
+authors = [
+    {name = "Pablo Valentini", email = "pablondrina@gmail.com"}
+]
+keywords = ["django", "shopman", "admin", "unfold"]
+classifiers = [
+    "Development Status :: 3 - Alpha",
+    "Environment :: Web Environment",
+    "Framework :: Django",
+    "Framework :: Django :: 5.2",
+    "Intended Audience :: Developers",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+]
+requires-python = ">=3.11"
+dependencies = [
+    "Django>=5.2,<6.0",
+    "phonenumbers>=8.13",
+]
+
+[project.optional-dependencies]
+unfold = [
+    "django-unfold>=0.80,<1.0",
+]
+
+[tool.setuptools]
+packages = [
+    "commons",
+    "commons.admin",
+    "commons.contrib",
+    "commons.contrib.admin_unfold",
+    "commons.tests",
+    "shopman_commons",
+    "shopman_commons.admin",
+    "shopman_commons.contrib",
+    "shopman_commons.contrib.admin_unfold",
+]
+include-package-data = true
+
+[tool.setuptools.package-dir]
+commons = "."
+shopman_commons = "."
+
+[tool.setuptools.package-data]
+shopman_commons = [
+    "py.typed",
+    "static/**",
+]
+
+[tool.ruff]
+line-length = 120
+target-version = "py311"
+select = ["E", "W", "F", "I", "B", "C4", "UP"]
+ignore = ["E501", "B008"]
